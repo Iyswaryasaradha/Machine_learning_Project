@@ -1,6 +1,9 @@
 from flask import Flask
 from housing.logger import logging
 from housing.exception import HousingException
+import os
+import sys
+
 app=Flask(__name__)
 
 
@@ -11,9 +14,11 @@ def index():
     except Exception as e:
         housing = HousingException(e,sys)
         logging.info(housing.error_message)
+    
     logging.info("We are testing logging module")
+    
     return "Starting Machine Learning Project"
 
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run()
